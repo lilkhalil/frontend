@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <title>IOprint</title>
+</head>
+
+<body>
+    <div class="content">
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html"><img src="/images/logo-header.svg"></a>
+                </div>
+                <div class="menu">
+                    <ul id="navbar">
+                        <li><a href="about.html">Компания</a></li>
+                        <li><a href="catalogue.html">Каталог товаров</a></li>
+                    </ul>
+                </div>
+                <div class="basket">
+                    <a href="basket.html">
+                        <img src="/images/basket.svg">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="lev-page">
+            <div class="ContentInformation">
+                <div class="InformationCompany">
+                    <img class="ImgCompanyInfo" src="/images/CompanyInfo.png" alt="">
+                    <div class="CompanyInfo">
+                        <p id="text_company">Первым, в 1440 году, книгопечатанье изобрел ювелир и изобретатель из
+                            Германии Иоганн Гуттенберг, сделав буквы подвижными. Это изобретение очень быстро стало
+                            популярным и распространилось по всему миру. Его изобретение представляло собой буквы,
+                            которые вырезались из металла.</p>
+                        <p id="ref_text_company">Компания</p>
+                    </div>
+                </div>
+
+                <div class="InformationCatalog">
+                    <div class="CatalogInfo">
+                        <p id="text_catalog">В нашей типографии существуют различные варации товаров, Если вы считаете,
+                            что стиль это ваше, а мир требует больше красок, то вам точно к нам, мы работаем с любым
+                            материаллом, делаем принты специально для вас, любимые сериалы, фильмы, игры, ваши идеи, все
+                            это можно реализовать у нас.</p>
+                        <p id="ref_text_catalog">Каталог товаров</p>
+                    </div>
+                    <img class="ImgCatalogInfo" src="/images/CatalogInfo.png" alt="">
+                </div>
+            </div>
+            <div class="ContentTop">
+                <div class="responsive">
+                    <img src="images/responsive.svg">
+                    <p id="text_name">Отзывчивость</p>
+                    <p id="text_content">Хорошие отзывы, пунктуальность и готовность прислушиваться к каждому запросу
+                        клиента.</p>
+                </div>
+                <div class="quality">
+                    <img src="images/quality.svg">
+                    <p id="text_name">Качество</p>
+                    <p id="text_content">Фавориты качества среди конкурентов, хорошие материаллы и современное
+                        оборудование.</p>
+                </div>
+                <div class="profitable">
+                    <img src="images/profitable.svg">
+                    <p id="text_name">Выгодно</p>
+                    <p id="text_content">Самая дешёвая цена на рынке, готовность идти на встречу заказчику.</p>
+                </div>
+
+            </div>
+        </main>
+        <footer>
+            <img src="images/logo-footer.svg" alt="Image cannot be found">
+            <span>Сайт разработан командой разработчиков из группы ИНБО-07-20: Прядильников Л.Е. , Халилов
+                А.Р. , Ужахов Н.Л. , Рудкин И.С.</span>
+            <img src="images/qr.svg" alt="Never gonna give you up">
+        </footer>
+    </div>
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animation_content_top');
+                    return;
+                }
+            });
+        });
+        observer.observe(document.querySelector('.ContentTop'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <title>IOprint</title>
+</head>
+
+<body>
+  <div class="content">
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="images/logo-header.svg">
+          </a>
+        </div>
+        <div class="menu">
+          <ul id="navbar">
+            <li><a href="about.html">Компания</a></li>
+            <li><a href="catalogue.html">Каталог товаров</a></li>
+          </ul>
+        </div>
+        <div class="basket">
+          <a href="basket.html">
+            <img src="images/basket.svg">
+          </a>
+        </div>
+      </div>
+    </header>
+    <main class="ilya-page">
+      <div class="head-back">
+        <h3>Корзина</h3>
+      </div>
+      <div class="container" id="container">
+        <div class="left-column" id="left">
+          <ul id="products">
+            <li><img src="images/content/1ilyahigh.png" alt="Костюм">
+              <div class="description">
+                <p>Женский костюм Oversize UTIPUTI</p>
+                <p>42 RUS (XS INT)</p>
+                <p>Синий</p>
+              </div>
+              <p class="cost">3700 Р</p>
+            </li>
+            <li><img src="images/content/2ilyahigh.png" alt="Костюм2">
+              <div class="description">
+                <p>Мужская футболка Homer God of Bar</p>
+                <p>42 RUS (XS INT)</p>
+                <p>Синий</p>
+              </div>
+              <p class="cost">6100 Р</p>
+            </li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <h3>Сумма заказа</h3>
+          <p>2 товара</p>
+          <p>Итого <span>9800 Р</span></p>
+          <p>Перейти к оформлению</p>
+          <p>Промокод</p>
+        </div>
+      </div>
+
+      <div class="recommendations" id="recommendations">
+        <h2>Вас может заинтересовать:</h2>
+        <ul>
+          <li>
+            <img src="images/content/1ilyalow.png" alt="Футболка М" width="352" height="330">
+            <p>1800 Р</p>
+            <p>Мужская футболка HEXAGON</p>
+            </a>
+          </li>
+          <li>
+            <img src="images/content/2ilyalow.png" alt="Футболка Ж" width="352" height="330">
+            <p>3200 Р</p>
+            <p>Женская футболка FRIENDS</p>
+            </a>
+          </li>
+          <li>
+            <img src="images/content/3ilyalow.png" alt="Пижама М" width="352" height="330">
+            <p>2500 Р</p>
+            <p>Мужская пижама Динозавр</p>
+            </a>
+          </li>
+          <li>
+            <img src="images/content/4ilyalow.png" alt="Пижама Ж" width="352" height="330">
+            <p>4700 Р</p>
+            <p>Женская пижама Kibutsuji</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer>
+      <img src="images/logo-footer.svg" alt="Image cannot be found">
+      <span>Сайт разработан командой разработчиков из группы ИНБО-07-20: Прядильников Л.Е. , Халилов
+        А.Р. , Ужахов Н.Л. , Рудкин И.С.</span>
+      <img src="images/qr.svg" alt="Never gonna give you up">
+    </footer>
+  </div>
+  <script>
+    function setHeight() {
+      const container = document.getElementById("container");
+      const left = document.getElementById("left");
+      if (container.offsetHeight < left.offsetHeight) {
+        container.style.height = left.offsetHeight;
+      } else {
+        container.style.height = 749;
+      }
+    }
+    function setCost() {
+      const productCosts = document.getElementsByClassName("cost");
+      const cost = document.querySelector("main.ilya-page .right-column p span");
+      const length = document.querySelector("main.ilya-page .right-column p:nth-child(2)");
+      length.innerHTML = productCosts.length + ' товаров';
+      let sum = 0;
+      for (let cost of productCosts) {
+        sum += parseInt(cost.innerHTML);
+      }
+      cost.innerHTML = sum;
+    }
+    function addItem(target) {
+      const productList = document.querySelector("main.ilya-page .left-column ul");
+      const item = document.createElement("li");
+      const image = document.createElement("img");
+      image.setAttribute("src", target.querySelector("img").getAttribute("src"));
+      const description = document.createElement("div");
+      description.setAttribute("class", "description");
+      const name = document.createElement("p");
+      name.innerHTML = target.querySelector("p:nth-child(3)").innerHTML;
+      description.appendChild(name);
+      const cost = document.createElement("p");
+      cost.setAttribute("class", "cost");
+      cost.innerHTML = target.querySelector("p:nth-child(2)").innerHTML;
+      item.append(image, description, cost);
+      productList.appendChild(item);
+      setHeight();
+      setCost();
+    }
+    const recommendations = document.querySelectorAll("main.ilya-page .recommendations ul li");
+    for (let recommendation of recommendations) {
+      recommendation.addEventListener("click", () => addItem(recommendation));
+    }
+  </script>
+</body>
+
+</html>
